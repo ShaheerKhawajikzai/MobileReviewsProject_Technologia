@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileReviewsProject", "MobileReviewsProject\MobileReviewsProject.csproj", "{C3A57209-8674-447A-92B3-39916F74E9AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buisness", "Buisness\Buisness.csproj", "{911015FE-D3EF-4108-9F54-74A977E8FBF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3A57209-8674-447A-92B3-39916F74E9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A57209-8674-447A-92B3-39916F74E9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A57209-8674-447A-92B3-39916F74E9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A57209-8674-447A-92B3-39916F74E9AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{911015FE-D3EF-4108-9F54-74A977E8FBF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{911015FE-D3EF-4108-9F54-74A977E8FBF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{911015FE-D3EF-4108-9F54-74A977E8FBF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{911015FE-D3EF-4108-9F54-74A977E8FBF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {831ED8A2-612F-42E1-AE69-47AE54E634F6}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Carattere&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+:root {
+  --hero-bg-clr: #212844;
+  --white-clr: rgba(255, 255, 255, 1);
+  --primary-fnt-clr: rgba(102, 102, 102, 1);
+
+  --secondary-fnt-clr: rgba(5, 171, 243, 1);
+  --card-bg-clr: rgba(245, 245, 245, 1);
+  --card-border-clr: rgba(237, 237, 237, 1);
+
+  --top-brand-bg-1: rgba(49, 49, 49, 1);
+  --top-brand-bg-2: rgba(255, 243, 204, 1);
+  --top-brand-bg-3: rgba(255, 236, 223, 1);
+}
+
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  width: 85%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+}
+.text-center {
+  text-align: center;
+}
+.upper-case {
+  text-transform: uppercase;
+}
+.italic {
+  color: var(--secondary-fnt-clr);
+  font-family: "Carattere";
+}
+.main-parent {
+  margin-top: 1em;
+}
+.search-bar {
+  position: relative;
+  width: max-content;
+}
+.search-btn {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  background-color: var(--secondary-fnt-clr);
+  padding: 0.2em 0.5em;
+  height: 100%;
+}
+.search-arrow {
+  position: absolute;
+}
+
+.search-bar input {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  padding: 1em 1em 0.6em 3em;
+  background-color: rgba(243, 249, 251, 1);
+  border: none;
+  color: rgba(102, 102, 102, 1);
+}
+
+.search-bar input:focus {
+  outline: 1px solid var(--secondary-fnt-clr);
+}
+
+.hero-section {
+  background-color: var(--hero-bg-clr);
+  padding: 1.5em 1.5em 2.5em 1.5em;
+  letter-spacing: 1px;
+  margin-bottom: 5em;
+}
+.hero-section-text h2 {
+  font-size: clamp(16px, 3vw, 35px);
+  line-height: 1.8;
+}
+.hero-section-text p {
+  margin: 1em 0;
+  color: var(--primary-fnt-clr);
+}
+.hero-section h2,
+.hero-section h1 {
+  color: var(--white-clr);
+}
+.hero-section h1 {
+  text-transform: uppercase;
+}
+
+.hero-section-image img {
+  max-height: 318px;
+}
+
+.left-side h4 {
+  font-size: clamp(18px, 4vw, 24px);
+}
+.side-link {
+  text-decoration: none;
+  color: var(--white-clr);
+}
+.side-item {
+  text-align: center;
+  list-style-type: none;
+  font-family: "Nunito Sans", sans-serif;
+
+  margin-bottom: 0.5em;
+}
+
+.side-bar {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.devices-section,
+.coming-soon-section,
+.top-brands-section {
+  margin: 2em 0;
+}
+.devices-section h4 {
+  color: var(--primary-fnt-clr);
+}
+.extra {
+  color: var(--secondary-fnt-clr);
+}
+.card {
+  margin-top: 2rem;
+  border: 1px solid var(--card-border-clr);
+  border-radius: 10px;
+  box-shadow: 11px 12px 5px -13px var(--secondary-fnt-clr);
+  transition: scale 250ms ease-in-out, border 250ms ease-in-out;
+}
+
+.card:hover {
+  scale: 1.1;
+  border: 1px solid var(--secondary-fnt-clr);
+}
+.card-items {
+  border: 1px solid rgba(237, 237, 237, 1);
+  border-radius: 5px;
+}
+.card-hr {
+  margin-top: 0.5em;
+  background-color: var(--card-border-clr);
+}
+.card-items img {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.card-items-data {
+  padding: 1em 1em 2.5em 1em;
+}
+
+.card-items-data p {
+  margin-bottom: 0.5em;
+}
+
+.coming-soon-item {
+  display: grid;
+  place-items: center;
+  margin-top: 3em;
+}
+.devices-section h4,
+.coming-soon-section h4 {
+  text-align: center;
+}
+
+.coming-soon-item img {
+  height: 140px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  background-color: var(--card-bg-clr);
+  border-radius: 50%;
+}
+
+.coming-soon-item h3 {
+  margin-top: 0.5em;
+}
+.top-brand-item {
+  justify-content: space-between;
+  padding: 1em 0em 0 1em;
+  margin-top: 2em;
+  border-radius: 10px;
+}
+.top-brand-text {
+  margin-top: 0.8em;
+}
+
+.iphone {
+  background-color: rgba(49, 49, 49, 1);
+}
+
+.realme {
+  background-color: rgba(255, 243, 204, 1);
+}
+
+.xiaomi {
+  background-color: rgba(255, 236, 223, 1);
+}
+.top-brand-item span {
+  padding: 0.5em 0.7em;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+.iphone span {
+  color: white;
+  background-color: rgba(73, 73, 73, 1);
+}
+.realme span {
+  color: black;
+  background-color: rgba(246, 222, 141, 1);
+}
+.xiaomi span {
+  color: black;
+  background-color: rgba(255, 209, 176, 1);
+}
+
+.top-brand-text h4 {
+  background-color: rgba(255, 201, 21, 1);
+  margin-top: 1em;
+  padding: 0.3em 0.5em;
+  letter-spacing: 1px;
+  text-align: center;
+  color: rgba(17, 17, 17, 1);
+  font-size: 1.3rem;
+}
+.top-brand-img img {
+  max-height: 190px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+.side-bar {
+  background-color: var(--hero-bg-clr);
+  padding: 2em 1em 0 1em;
+  border-radius: 15px;
+  gap: 0.5em;
+}
+
+.pseudo-element {
+  position: relative;
+  color: rgba(102, 102, 102, 1);
+}
+.pseudo-element::before {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 30%;
+  position: absolute;
+  background-color: var(--secondary-fnt-clr);
+  top: 49px;
+  z-index: 10;
+}
+.pseudo-element::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  background-color: var(--primary-fnt-clr);
+
+  top: 50px;
+}
+.pseudo-element:hover::before {
+  width: 100%;
+  background-color: var(--secondary-fnt-clr);
+}
+
+@media (min-width: 360px) {
+  .side-bar {
+    display: flex;
+  }
+}
+
+@media (min-width: 660px) {
+  .hero-section-text {
+    width: 60%;
+    line-height: 1.8em;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .side-bar {
+    display: block;
+    height: fit-content;
+  }
+  .devices-section {
+    display: flex;
+    gap: 1em;
+  }
+  .coming-soon-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+    margin-bottom: 5em;
+  }
+  .top-brands-section {
+    display: flex;
+    gap: 1em;
+  }
+  .top-brand-item {
+    flex: 1;
+  }
+  .main-parent {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 1em;
+  }
+}

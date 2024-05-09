@@ -1,0 +1,39 @@
+﻿@model GetDeviceBySlugModelResponse
+
+<div>
+    <input type="number" hidden value="@Model.Id" id="device-Id" />
+    <div style="border:1px solid black;">
+        <h3 class="display-4">MODEL: @Model.Model</h3>
+
+        <a href="/device/@Model.BrandSlug">
+            <h3>BRAND: @Model.BrandName</h3>
+        </a>
+
+        <h5>Price in PKR : @Model.PriceInPKR</h5>
+        <h5>Price in USD @Model.PriceInUSD</h5>
+        <img src="@Model.ImageUrl" />
+
+    </div>
+
+</div>
+
+<div style="display:grid; place-items:center;" id="parent">
+    @foreach (var comment in Model.Comments)
+    {
+        <h3>Customers Feedback</h3>
+        <div>
+
+            <span style="border-radius:100%; background-color:aqua; color:black">SH</span>
+            <h4>@comment.Name</h4>
+            <p>@comment.Comment </p>
+        </div>
+    }
+</div>
+
+<div>
+    <input type="text" placeholder="please enter your name" class="user-name" />
+    <textarea placeholder="Write your comment" class="user-comment"></textarea>
+    <button id="btn">Submit</button>
+</div>
+<script src="/js/CommentJS/Comment.js"></script>
+

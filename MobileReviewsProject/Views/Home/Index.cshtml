@@ -1,0 +1,23 @@
+﻿@model List<GetDevicesModelResponse>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    @foreach (var item in Model)
+    {
+        <a href="/device/@item.BrandSlug/@item.Slug">
+            <div style="border:1px solid black;">
+                <h3 class="display-4">MODEL: @item.Model</h3>
+                <h3>BRAND: @item.BrandName</h3>
+                <h5>Price in PKR : @item.PriceInPKR</h5>
+                <h5>Price in USD @item.PriceInUSD</h5>
+                <img src="@item.ImageUrl" />
+
+            </div>
+        </a>
+
+
+    }
+
+</div>

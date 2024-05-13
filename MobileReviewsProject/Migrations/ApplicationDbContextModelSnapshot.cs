@@ -77,6 +77,9 @@ namespace MobileReviewsProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("DeviceId")
                         .HasColumnType("int");
 
@@ -194,6 +197,9 @@ namespace MobileReviewsProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Main")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -214,9 +220,8 @@ namespace MobileReviewsProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PriceInPKR")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("PriceInPKRInt")
+                        .HasColumnType("int");
 
                     b.Property<string>("PriceInUSD")
                         .IsRequired()
@@ -289,6 +294,32 @@ namespace MobileReviewsProject.Migrations
                     b.ToTable("Devices");
                 });
 
+            modelBuilder.Entity("MobileReviewsProject.Models.DeviceOldNewSlug", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DeviceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NewSlug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OldSlug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeviceId");
+
+                    b.ToTable("DevicesOldNewSlug");
+                });
+
             modelBuilder.Entity("MobileReviewsProject.Models.Comment", b =>
                 {
                     b.HasOne("MobileReviewsProject.Models.Device", "Device")
@@ -309,6 +340,17 @@ namespace MobileReviewsProject.Migrations
                         .IsRequired();
 
                     b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("MobileReviewsProject.Models.DeviceOldNewSlug", b =>
+                {
+                    b.HasOne("MobileReviewsProject.Models.Device", "Device")
+                        .WithMany()
+                        .HasForeignKey("DeviceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Device");
                 });
 
             modelBuilder.Entity("MobileReviewsProject.Models.Device", b =>

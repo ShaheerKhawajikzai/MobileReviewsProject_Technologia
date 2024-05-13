@@ -30,7 +30,6 @@ namespace MobileReviewsProject.Controllers
             if (device == null)
                 return RedirectToAction("NotFound", "Home");
 
-
             return View(device);
         }
 
@@ -38,21 +37,25 @@ namespace MobileReviewsProject.Controllers
         [Route("device/{brand}")]
         public async Task<IActionResult> GetAllBrandDevices(string brand)
         {
-            var data = await mediator.Send(new GetDevicesModelRequest() { BrandSlug = brand });
-            return View(data);
+            var listofDevices = await mediator.Send(new GetDevicesModelRequest() { BrandSlug = brand });
+            ViewBag.Brand = brand.Split("-")[0];
 
-           
+            return View(listofDevices);
+
+
         }
 
         [Route("/device/handlecomment")]
         [HttpPost]
         public async Task<IActionResult> HandleComment([FromBody] UserComment obj)
+
         {
             var data = await mediator.Send(new AddCommentModelRequest()
             {
                 UserComment = obj.Comment,
                 DeviceId = obj.DeviceId,
-                UserName = obj.UserName
+                UserName = obj.UserName,
+
             });
 
             return Json(data);

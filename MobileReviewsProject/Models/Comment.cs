@@ -18,5 +18,7 @@ namespace MobileReviewsProject.Models
 
         public Device Device { get; set; }
 
+        public DateTime CreatedAt { get; set; }
+
     }
 }

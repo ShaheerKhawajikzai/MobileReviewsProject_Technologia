@@ -23,13 +23,16 @@ namespace MobileReviewsProject.RequestHandler.Devices
                 new GetDevicesModelResponse()
                 {
                     Id = d.Id,
+                    Model = d.Model,
                     Description = d.Description,
                     Slug = d.Slug,
                     BrandSlug = d.Brand.Slug,
                     BrandName = d.Brand.Name,
                     ImageUrl = d.ImageUrl,
-                    PriceInPKR = d.PriceInPKR,
+                    PriceInPKR = d.PriceInPKRInt,
                     PriceInUSD = d.PriceInUSD,
+                    ReleaseDate = d.ReleaseDate
+                    
                 }).ToListAsync();
 
             return listOfDevices;

@@ -1,3 +1,4 @@
+using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MobileReviewsProject.Data;
@@ -12,7 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<Brands, Brands>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-builder.Services.AddAutoMapper(typeof(Program).GetTypeInfo().Assembly);
+builder.Services.AddAutoMapper(typeof(Program).GetTypeInfo().Assembly);         
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

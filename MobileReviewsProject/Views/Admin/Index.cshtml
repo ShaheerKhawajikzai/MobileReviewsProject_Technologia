@@ -1,0 +1,39 @@
+﻿@using MobileReviewsProject.Request.Admin
+@using System.Text
+@model List<GetDevicesAdminModelResponse>
+
+
+<div>
+    <h2>Admin Panel</h2>
+    <table>
+        <thead>
+        <th>Model</th>
+        <th>Price in Pkr</th>
+        <th>Price in Usd</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Action</th>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Take(20))
+            {
+                var description = new StringBuilder();
+                foreach (var str in item.Description.Split(" ").Take(20))
+                {
+                    description.AppendLine(str);
+                }
+
+                <tr>
+                    <td>@item.Model</td>
+                    <td>@item.PriceInPKRInt</td>
+                    <td>@item.PriceInUSD</td>
+                    <td>@description...</td>
+                    <td><img src="@item.ImageUrl" alt="Device Image" /></td>
+                    <td> <a asp-controller="Admin" asp-action="EditDevice" asp-route-slug="@item.Slug">Edit</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

@@ -1,23 +1,165 @@
-﻿@model List<GetDevicesModelResponse>
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using MobileReviewsProject.Helper.Devices
+@model DevicesModel
 
-<div>
-    @foreach (var item in Model)
+<h4 class="pseudo-element">Latest Mobile Phones</h4>
+<div class="devices-section">
+    @foreach (var item in Model.ListOflatestDevice.Take(4))
     {
-        <a href="/device/@item.BrandSlug/@item.Slug">
-            <div style="border:1px solid black;">
-                <h3 class="display-4">MODEL: @item.Model</h3>
-                <h3>BRAND: @item.BrandName</h3>
-                <h5>Price in PKR : @item.PriceInPKR</h5>
-                <h5>Price in USD @item.PriceInUSD</h5>
-                <img src="@item.ImageUrl" />
 
-            </div>
-        </a>
+        <div class="card">
+            <a href="/device/@item.BrandSlug/@item.Slug" class="detail-link">
+                <div class="card-items">
+                    <div class="card-item-img">
+                        <img src="@item.ImageUrl" alt="" />
+                    </div>
+
+                    <div class="card-items-data">
+                        <p>@item.Model</p>
+                        <strong> Rs @item.PriceInPKR</strong>
+
+                        <hr class="card-hr" />
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+
+</div>
+
+<h4 class="pseudo-element">
+    Mobile Phone Prices in Pakistan >
+    <span class="extra">20,000</span>
+</h4>
+
+<div class="devices-section">
+    @foreach (var item in Model.DevicesLessThan20k.Take(4))
+    {
+
+
+        <div class="card">
+            <a href="device/@item.BrandSlug/@item.Slug" class="detail-link">
+                <div class="card-items">
+                    <div class="card-item-img">
+                        <img src="@item.ImageUrl" alt="" />
+                    </div>
+                    <div class="card-items-data">
+                        <p>@item.Model</p>
+                        <strong> Rs @item.PriceInPKR</strong>
+                        <hr class="card-hr" />
+                    </div>
+                </div>
+            </a>
+        </div>
 
 
     }
+</div>
 
+<h4 class="pseudo-element">
+    Mobile Phone Prices in Pakistan >
+    <span class="extra">30,000</span>
+</h4>
+
+<div class="devices-section">
+
+    @foreach (var item in Model.DevicesLessThan30k.Take(4))
+    {
+
+        <div class="card">
+            <a href="device/@item.BrandSlug/@item.Slug" class="detail-link">
+                <div class="card-items">
+                    <div class="card-item-img">
+                        <img src="@item.ImageUrl" alt="" />
+                    </div>
+                    <div class="card-items-data">
+                        <p>@item.Model</p>
+                        <strong> Rs @item.PriceInPKR</strong>
+                        <hr class="card-hr" />
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    }
+</div>
+
+
+<h4 class="pseudo-element">
+    Mobile Phone Prices in Pakistan >
+    <span class="extra">50,000</span>
+</h4>
+<div class="devices-section">
+    @foreach (var item in Model.DevicesLessThan50k.Take(4))
+    {
+        <div class="card">
+            <a href="device/@item.BrandName/@item.BrandSlug" class="detail-link">
+                <div class="card-items">
+                    <div class="card-item-img">
+                        <img src="@item.ImageUrl" alt="" />
+                    </div>
+                    <div class="card-items-data">
+                        <p>@item.Model</p>
+                        <strong> Rs @item.PriceInPKR</strong>
+                        <hr class="card-hr" />
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+<h4 class="pseudo-element">New Edition <span class="extra">Coming Soon</span></h4>
+<div class="coming-soon-section">
+
+    <div class="coming-soon-item">
+        <img src="/Images/pic1.png" alt="">
+        <h3>Motorola</h3>
+    </div>
+    <div class="coming-soon-item">
+        <img src="/Images/pic1.png" alt="">
+        <h3>Motorola</h3>
+    </div>
+    <div class="coming-soon-item">
+        <img src="/Images/pic1.png" alt="">
+        <h3>Motorola</h3>
+    </div>
+    <div class="coming-soon-item">
+        <img src="/Images/pic1.png" alt="">
+        <h3>Motorola</h3>
+    </div>
+    <div class="coming-soon-item">
+        <img src="/Images/pic1.png" alt="">
+        <h3>Motorola</h3>
+    </div>
+
+</div>
+
+<h4 class="pseudo-element">Top <span class="extra">Brands</span></h4>
+<div class="top-brands-section">
+    <div class="top-brand-item flex iphone">
+        <div class="top-brand-text ">
+            <span class="upper-case ">Iphone</span>
+        </div>
+        <div class="top-brand-img">
+            <img src="/Images/realme.png" alt="">
+        </div>
+    </div>
+
+    <div class="top-brand-item flex  realme">
+        <div class="top-brand-text ">
+            <span class="upper-case ">Realme</span>
+            <h4>realme</h4>
+        </div>
+        <div class="top-brand-img">
+            <img src="/Images/realme.png" alt="">
+        </div>
+    </div>
+    <div class="top-brand-item flex  xiaomi">
+        <div class="top-brand-text ">
+            <span class="upper-case ">Xiaomi</span>
+        </div>
+        <div class="top-brand-img">
+            <img src="/Images/realme.png" alt="">
+        </div>
+    </div>
 </div>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,9 +16,8 @@ namespace MobileReviewsProject.Models
 
         [Required]
         public string ImageUrl { get; set; }
-        [Required]
 
-        public string PriceInPKR { get; set; }
+        public int? PriceInPKRInt { get; set; }
 
         [Required]
         public string PriceInUSD { get; set; }
@@ -114,8 +114,10 @@ namespace MobileReviewsProject.Models
         public DateTime ReleaseDate { get; set; }
 
         public string? Slug { get; set; }
-        
+
         public int View { get; set; }
+
+        public bool IsActive { get; set; }
 
         public List<Comment> Comments { get; set; }
     }

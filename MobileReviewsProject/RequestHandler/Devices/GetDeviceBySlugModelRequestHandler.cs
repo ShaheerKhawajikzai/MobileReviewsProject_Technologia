@@ -31,20 +31,13 @@ namespace MobileReviewsProject.RequestHandler.Devices
 
             var response = new GetDeviceBySlugModelResponse()
             {
-                Id = deviceFromDb.Id,
-                BrandName = deviceFromDb.Brand.Name,
-                BrandSlug = deviceFromDb.Brand.Slug,
-                PriceInPKR = deviceFromDb.PriceInPKR,
-                PriceInUSD = deviceFromDb.PriceInUSD,
-                Description = deviceFromDb.Description,
-                ImageUrl = deviceFromDb.ImageUrl,
-                Model = deviceFromDb.Model,
-                Slug = deviceFromDb.Slug,
+                Device = mapper.Map<DeviceDto>(deviceFromDb),
                 Comments = deviceFromDb.Comments.Select(x => new DeviceComments()
                 {
                     Comment = x.UserComment,
                     DeviceId = x.DeviceId,
-                    Name = x.UserName
+                    Name = x.UserName,
+                    CreatedAt = x.CreatedAt
                 }).ToList()
             };
 

@@ -1,0 +1,58 @@
+﻿@using MobileReviewsProject.Models.Admin
+@model EditDevice
+@{
+    var priceInUsd = Convert.ToInt32(Model.PriceinUsd.Replace("$", ""));
+}
+
+<h3 style="margin-left:2.2rem;">Edit Device</h3>
+<form asp-action="EditDevice" method="post" enctype="multipart/form-data" style="display:grid;place-items:center; grid-template-columns: 6fr 1fr; gap:1rem; ">
+
+    <input asp-for="ProductId" hidden />
+    <input asp-for="ImageUrl" hidden />
+
+    <div class="device-info">
+
+        <div>
+            <label asp-for="Slug"></label>
+            <input asp-for="Slug" type="text" style="width:100%;margin-bottom:1rem;" />
+        </div>
+
+
+        <label asp-for="Model"></label>
+        <input type="text" asp-for="Model" />
+        <span asp-validation-for="Model" style="color:red;"></span>
+
+
+        <label asp-for="PriceInPkr"></label>
+        <input type="number" asp-for="PriceInPkr" />
+        <span asp-validation-for="Model" style="color:red;"></span>
+
+
+        <label asp-for="PriceinUsd"></label>
+        <input type="number" asp-for="@priceInUsd" />
+        <span asp-validation-for="Model" style="color:red;"></span>
+
+
+
+        <div>
+            <label asp-for="Description"></label>
+            <textarea rows="8" style="resize:none; width:100%;" asp-for="Description"></textarea>
+            <span asp-validation-for="Model" style="color:red;"></span>
+        </div>
+
+        <label asp-for="ReleasedDate"></label>
+        <input asp-for="ReleasedDate" type="date" />
+
+        <label asp-for="Image"></label>
+        <input type="file" asp-for="Image" />
+
+        <div>
+
+            <button type="submit">Update</button>
+        </div>
+    </div>
+    <div class="deivice-image">
+        <img src="@Model.ImageUrl" />
+    </div>
+
+</form>

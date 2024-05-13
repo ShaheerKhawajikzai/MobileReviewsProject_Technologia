@@ -18,13 +18,14 @@ namespace MobileReviewsProject.RequestHandler.Comments
         {
             if (string.IsNullOrWhiteSpace(request.UserName) || string.IsNullOrWhiteSpace(request.UserComment) || request.DeviceId <= 0)
             {
-                return new AddCommentModelResponse() { IsSuccess = true, Message = "Something went wrong" };
+                return new AddCommentModelResponse() { IsSuccess = false, Message = "Something went wrong" };
             }
             var obj = new Comment()
             {
                 DeviceId = request.DeviceId,
                 UserComment = request.UserComment,
-                UserName = request.UserName
+                UserName = request.UserName,
+                CreatedAt = DateTime.UtcNow
             };
 
             await db.Comments.AddAsync(obj);

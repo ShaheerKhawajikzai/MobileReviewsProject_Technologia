@@ -1,0 +1,30 @@
+﻿@using MobileReviewsProject.Models.Admin
+@model User
+
+<div class="Login-form">
+    <h3>LogIn</h3>
+    <form asp-action="Login" method="post">
+
+        <div>
+            <label asp-for="Email"></label>
+            <br />
+            <input asp-for="Email" type="email" placeholder="Enter your email" />
+            <br />
+            <span asp-validation-for="Email" style="color:red;"></span>
+        </div>
+
+        <div>
+            <label asp-for="Password"></label>
+            <br />
+            <input asp-for="Password" type="password" placeholder="Enter your password" />
+            <br />
+            <span asp-validation-for="Password" style="color:red;"></span>
+        </div>
+        <div>
+            <button type="submit">Log in</button>
+        </div>
+
+    </form>
+</div>
+
+

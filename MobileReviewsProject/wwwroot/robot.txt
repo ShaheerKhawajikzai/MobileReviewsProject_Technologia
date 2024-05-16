@@ -1,0 +1,10 @@
+﻿User-agent: *
+Disallow: /admin/
+
+Allow:/images/
+Allow:/js/CommentJs/
+
+User-agent: BadBot
+Disallow: /
+
+Sitemap: http://www.yourwebsite.com/sitemap.xml

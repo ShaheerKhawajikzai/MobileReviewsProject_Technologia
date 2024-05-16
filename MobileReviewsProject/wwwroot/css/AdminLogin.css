@@ -1,0 +1,165 @@
+﻿.admin-utility {
+    display: flex;
+    justify-content: space-between;
+}
+    .admin-utility button {
+        padding: .3em 1em;
+        background-color: var(--hero-bg-clr);
+        border-radius:5px;
+        color:white;
+        transition: background-color 350ms ease-in-out;
+    }
+
+        .admin-utility button:hover {
+            background-color: #39446e;
+        }
+
+
+.Login-form {
+    background-color: #f8f8f8;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 4px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+    .Login-form h3 {
+        text-align: center;
+        color: var(--hero-bg-clr);
+    }
+
+    .Login-form form span {
+        font-size: 12px;
+    }
+
+    .Login-form form label {
+        font-size: 14px;
+    }
+
+    .Login-form form input {
+        padding: 0.3em .5em;
+        border-radius: 3px;
+        outline: none;
+        border: none;
+        width: 100%;
+    }
+
+
+    .Login-form form div {
+        width: 60%;
+        margin: 0 auto 10px auto;
+    }
+
+        .Login-form form div button {
+            background-color: var(--hero-bg-clr);
+            color: white;
+            font-size: 14px;
+            padding: .5em 1em;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 30%;
+        }
+
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+    .styled-table thead tr {
+        background-color: var(--hero-bg-clr);
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid var(--hero-bg-clr);
+        }
+
+
+
+
+    .device-form {
+        display: grid;
+        grid-template-columns: 6fr 2fr;
+        gap: 1rem;
+        padding: 1em 1em 1em 0;
+        box-shadow: 4px 3px 5px rgba(0, 0, 0, 0.1);
+    }
+    .device-input {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+        .device-input > div {
+            width: 46%;
+        }
+
+        .device-input div input, .device-info textarea {
+            width: 100%;
+            padding: .3em 1em;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+.device-info button {
+    width: 30%;
+    padding: .3rem 0;
+    border: none;
+    background-color: var(--hero-bg-clr);
+    border-radius: 5px;
+    color: white;
+}
+
+.device-image {
+    height: 200px;
+    text-align: center;
+}
+    .device-image img {
+        height: 100%;
+        margin-top: 1.3rem;
+    }
+
+
+@media (max-width:768px){
+    .device-input {
+        display: block;
+    }
+        .device-input > div {
+            width: 100%;
+        }
+
+        .device-form{
+            display:block;
+        }
+    .device-info button {
+        margin-bottom: 1em;
+    }
+
+}
+
+
+
+
+
+
+    

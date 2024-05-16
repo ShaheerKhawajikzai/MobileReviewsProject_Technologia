@@ -1,5 +1,6 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MobileReviewsProject.Data;
 using MobileReviewsProject.Helper;
@@ -13,7 +14,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<Brands, Brands>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-builder.Services.AddAutoMapper(typeof(Program).GetTypeInfo().Assembly);         
+builder.Services.AddAutoMapper(typeof(Program).GetTypeInfo().Assembly);
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.LoginPath = "/admin/login";
+        option.AccessDeniedPath = "/home/notfound";
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +37,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

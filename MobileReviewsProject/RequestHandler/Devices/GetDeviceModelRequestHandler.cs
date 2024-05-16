@@ -16,9 +16,13 @@ namespace MobileReviewsProject.RequestHandler.Devices
         public async Task<List<GetDevicesModelResponse>> Handle(GetDevicesModelRequest request, CancellationToken cancellationToken)
         {
 
+
             var listOfDevices = await _db.Devices.Include(x => x.Brand)
-                .Where(d => string.IsNullOrWhiteSpace(request.BrandSlug) ||
-                 d.Brand.Slug.ToLower() == request.BrandSlug.ToLower())
+               .Where(d => (string.IsNullOrWhiteSpace(request.BrandSlug) ||
+                d.Brand.Slug.ToLower() == request.BrandSlug.ToLower())
+                &&
+                (d.IsActive))
+
                 .Select(d =>
                 new GetDevicesModelResponse()
                 {
@@ -32,7 +36,7 @@ namespace MobileReviewsProject.RequestHandler.Devices
                     PriceInPKR = d.PriceInPKRInt,
                     PriceInUSD = d.PriceInUSD,
                     ReleaseDate = d.ReleaseDate
-                    
+
                 }).ToListAsync();
 
             return listOfDevices;

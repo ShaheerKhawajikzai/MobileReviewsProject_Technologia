@@ -27,5 +27,7 @@ namespace MobileReviewsProject.Models.Admin
         [DisplayName("Release Date")]
         public DateTime ReleasedDate { get; set; }
         public string Slug { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

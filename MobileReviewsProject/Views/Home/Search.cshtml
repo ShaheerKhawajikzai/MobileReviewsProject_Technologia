@@ -1,0 +1,38 @@
+﻿@using MobileReviewsProject.Request.Search
+@model List<SearchModelResponse>
+
+@if (Model.Count() == 0)
+{
+    <h3 style="text-align:center;">No device found related to : @ViewBag.Keyword </h3>
+}
+else
+{
+
+
+    <h3 style="text-align:center;">You searched for: @ViewBag.Keyword </h3>
+    <div class="devices-section">
+        @foreach (var item in Model)
+        {
+
+            <div class="card">
+                <a href="/device/@item.BrandSlug/@item.Slug" class="detail-link">
+                    <div class="card-items">
+                        <div class="card-item-img">
+                            <img src="@item.ImageUrl" alt="" />
+                        </div>
+
+                        <div class="card-items-data">
+                            <p>@item.Model</p>
+                            <strong> Rs @item.PriceInPKR</strong>
+
+                            <hr class="card-hr" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+}
+
+

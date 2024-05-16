@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿    using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MobileReviewsProject.AutomapperProfiles;
@@ -21,7 +21,14 @@ namespace MobileReviewsProject.RequestHandler.Admin
 
         public async Task<List<GetDevicesAdminModelResponse>> Handle(GetDevicesAdminModelRequest request, CancellationToken cancellationToken)
         {
-            var data = await _dbContext.Devices.Include(x => x.Brand).ToListAsync();
+            var data = await _dbContext.Devices.Include(x => x.Brand)
+                .Where(d =>
+                (string.IsNullOrWhiteSpace(request.Keyword) || d.Model.Contains(request.Keyword) || d.Brand.Name.Contains(request.Keyword))
+                &&
+                (!request.IsRefactor || d.IsRefactor)
+                ).ToListAsync();
+
+
 
             var getDevicesAdminModelResponses = Mapper.Map<List<GetDevicesAdminModelResponse>>(data);
 

@@ -22,6 +22,44 @@ namespace MobileReviewsProject.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("MobileReviewsProject.Models.Admin.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "shaheersk12@gmail.com",
+                            IsActive = true,
+                            Name = "Shaheer Khan",
+                            Password = "03330337272"
+                        });
+                });
+
             modelBuilder.Entity("MobileReviewsProject.Models.Brand", b =>
                 {
                     b.Property<int>("Id")
@@ -200,6 +238,9 @@ namespace MobileReviewsProject.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsRefactor")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Main")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -250,7 +291,7 @@ namespace MobileReviewsProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Technology")
                         .IsRequired()
@@ -290,6 +331,10 @@ namespace MobileReviewsProject.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
+
+                    b.HasIndex("Slug")
+                        .IsUnique()
+                        .HasFilter("[Slug] IS NOT NULL");
 
                     b.ToTable("Devices");
                 });

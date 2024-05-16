@@ -41,7 +41,7 @@
 }
 
 .product-detail-table th,
-td {
+.product-detail-table td {
     border-bottom: 1px solid rgba(234, 236, 240, 1);
     text-align: left;
     padding: 0.8em 0.3em 0.8em 1em;

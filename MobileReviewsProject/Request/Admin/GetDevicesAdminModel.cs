@@ -5,6 +5,9 @@ namespace MobileReviewsProject.Request.Admin
 {
     public class GetDevicesAdminModelRequest : IRequest<List<GetDevicesAdminModelResponse>>
     {
+        public string? Keyword { get; set; }
+
+        public bool IsRefactor { get; set; }
     }
     public class GetDevicesAdminModelResponse
     {

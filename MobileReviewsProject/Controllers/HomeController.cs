@@ -1,11 +1,15 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.EntityFrameworkCore;
 using MobileReviewsProject.Data;
+using MobileReviewsProject.Helper.Cache;
 using MobileReviewsProject.Helper.Devices;
 using MobileReviewsProject.Models;
 using MobileReviewsProject.Request.Devices;
+using MobileReviewsProject.Request.Search;
 using System.Diagnostics;
+
 
 namespace MobileReviewsProject.Controllers
 {
@@ -14,18 +18,17 @@ namespace MobileReviewsProject.Controllers
 
         private readonly ILogger<HomeController> _logger;
         private readonly IMediator mediatR;
-        private readonly ApplicationDbContext dbContext;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, IMediator mediator, ApplicationDbContext dbContext)
+        public HomeController(ILogger<HomeController> logger, IMediator mediator, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             this.mediatR = mediator;
-            this.dbContext = dbContext;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(GetDevicesModelRequest request)
         {
-
             var response = await mediatR.Send(new GetDevicesModelRequest());
 
             DevicesModel listOfDevices = new DevicesModel
@@ -39,10 +42,20 @@ namespace MobileReviewsProject.Controllers
 
             return View(listOfDevices);
         }
+
+        [Route("/search")]
+        public async Task<IActionResult> Search([FromQuery] string keyword)
+        {
+            var response = await mediatR.Send(new SearchModelRequest() { Keyword = keyword });
+            ViewBag.Keyword = keyword;
+
+            return View(response);
+        }
         public IActionResult NotFound()
         {
             return View();
         }
+
         public IActionResult Privacy()
         {
             return View();

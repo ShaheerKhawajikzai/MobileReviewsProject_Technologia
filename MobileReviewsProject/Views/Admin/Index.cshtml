@@ -3,37 +3,80 @@
 @model List<GetDevicesAdminModelResponse>
 
 
-<div>
-    <h2>Admin Panel</h2>
-    <table>
-        <thead>
-        <th>Model</th>
-        <th>Price in Pkr</th>
-        <th>Price in Usd</th>
-        <th>Description</th>
-        <th>Image</th>
-        <th>Action</th>
-        </thead>
+<h2>Admin Panel</h2>
 
-        <tbody>
-            @foreach (var item in Model.Take(20))
-            {
-                var description = new StringBuilder();
-                foreach (var str in item.Description.Split(" ").Take(20))
-                {
-                    description.AppendLine(str);
+<div class="admin-utility">
+    <form action="/admin" method="get">
+
+        <input type="text" name="keyword" />
+        <label>Refactored</label>
+
+        <input type="checkbox" name="IsRefactor" value="true" />
+
+        <button type="submit">Search</button>
+
+    </form>
+    <div >
+        <button class="refresh-btn">Refresh Url</button>
+    </div>
+
+</div>
+
+@if (Model.Count() == 0)
+{
+    <h1 style="text-align:center;">Data Not Found</h1>
+}
+else
+{
+
+
+    <div>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Model</th>
+                    <th colspan="2">Price in Pkr</th>
+                    <th colspan="2">Price in Usd</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @{
+                    var count = 0;
                 }
 
-                <tr>
-                    <td>@item.Model</td>
-                    <td>@item.PriceInPKRInt</td>
-                    <td>@item.PriceInUSD</td>
-                    <td>@description...</td>
-                    <td><img src="@item.ImageUrl" alt="Device Image" /></td>
-                    <td> <a asp-controller="Admin" asp-action="EditDevice" asp-route-slug="@item.Slug">Edit</a></td>
-                </tr>
-            }
+                @foreach (var item in Model.Take(20))
+                {
 
-        </tbody>
-    </table>
-</div>
+                    var description = new StringBuilder();
+                    foreach (var str in item.Description.Split(" ").Take(20))
+                    {
+                        description.AppendLine(str);
+                    }
+
+                    <tr>
+                        <td>@(++count)</td>
+                        <td>@item.Model</td>
+                        <td>@item.PriceInPKRInt</td>
+                        <td></td>
+                        <td>@item.PriceInUSD</td>
+                        <td></td>
+                        <td>@description...</td>
+                        <td style="height:100px; width:100px;"><img src="@item.ImageUrl" alt="Device Image" style="width:100%;height:100%;" /></td>
+                        <td> <a asp-controller="Admin" asp-action="EditDevice" asp-route-slug="@item.Slug">Edit</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+
+<script src="~/js/admin/refreshurl.js"></script>
+
+

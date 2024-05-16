@@ -31,7 +31,7 @@ namespace MobileReviewsProject.Data
             modelBuilder.Entity<Device>().HasIndex(x => x.Slug).IsUnique();
 
             modelBuilder.Entity<User>().HasData(
-                new User() { Id = 1, Name = "Shaheer Khan", Email = "shaheersk12@gmail.com", IsActive = true, Password = "03330337272" }
+                new User() { Id = 1, Name="Shaheer Khan", Email = "shaheersk12@gmail.com", IsActive = true, Password = "03330337272" }
 
                     );
 

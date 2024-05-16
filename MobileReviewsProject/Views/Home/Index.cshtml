@@ -3,7 +3,7 @@
 
 <h4 class="pseudo-element">Latest Mobile Phones</h4>
 <div class="devices-section">
-    @foreach (var item in Model.ListOflatestDevice.Take(4))
+    @foreach (var item in Model.ListOflatestDevice.Take(5))
     {
 
         <div class="card">
@@ -16,8 +16,6 @@
                     <div class="card-items-data">
                         <p>@item.Model</p>
                         <strong> Rs @item.PriceInPKR</strong>
-
-                        <hr class="card-hr" />
                     </div>
                 </div>
             </a>
@@ -32,7 +30,7 @@
 </h4>
 
 <div class="devices-section">
-    @foreach (var item in Model.DevicesLessThan20k.Take(4))
+    @foreach (var item in Model.DevicesLessThan20k.Take(5))
     {
 
 
@@ -45,7 +43,6 @@
                     <div class="card-items-data">
                         <p>@item.Model</p>
                         <strong> Rs @item.PriceInPKR</strong>
-                        <hr class="card-hr" />
                     </div>
                 </div>
             </a>
@@ -62,7 +59,7 @@
 
 <div class="devices-section">
 
-    @foreach (var item in Model.DevicesLessThan30k.Take(4))
+    @foreach (var item in Model.DevicesLessThan30k.Take(5))
     {
 
         <div class="card">
@@ -74,7 +71,6 @@
                     <div class="card-items-data">
                         <p>@item.Model</p>
                         <strong> Rs @item.PriceInPKR</strong>
-                        <hr class="card-hr" />
                     </div>
                 </div>
             </a>
@@ -89,7 +85,7 @@
     <span class="extra">50,000</span>
 </h4>
 <div class="devices-section">
-    @foreach (var item in Model.DevicesLessThan50k.Take(4))
+    @foreach (var item in Model.DevicesLessThan50k.Take(5))
     {
         <div class="card">
             <a href="device/@item.BrandName/@item.BrandSlug" class="detail-link">
@@ -100,7 +96,6 @@
                     <div class="card-items-data">
                         <p>@item.Model</p>
                         <strong> Rs @item.PriceInPKR</strong>
-                        <hr class="card-hr" />
                     </div>
                 </div>
             </a>

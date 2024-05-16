@@ -11,52 +11,83 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MobileReviewsProject</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     @*  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MobileReviewsProject.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/index.css" />
     <link rel="stylesheet" href="~/css/detail.css" />
+    <link rel="stylesheet" href="~/css/AdminLogin.css" />
 </head>
 <body>
-
     <main>
         <div class="main-parent wrapper">
-            <div class="left-side">
+            <div class="left-side" style="position:relative;">
+                <div class="bg-primary">
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+                <nav class="bg-primary letter-spacing-2 fs-400  toggle-nav nav-bar">
+                    
+                    <ul class="primary-navigation flow">
+                        <li class="nav-item">
+                            <a class="nav-lnk text-white" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-lnk text-white" href="">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-lnk text-white" href="">About us</a>
+                        </li>
+                    </ul>
+
+                </nav>
+
+
                 <section class="hero-section">
                     <div class="hero-section-text">
                         <h2>
                             Check the Prices &
                             <span class="italic"> Copmare it</span>
                         </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur obcaecati magnam, deleniti placeat perferendis aspernatur.</p>
+                        <p>"Discover, Compare, Decide: The Ultimate Mobile Review Platform for Tech Enthusiasts!"</p>
                         <div class="search-bar">
-                            <div class="search-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                                </svg>
-                            </div>
-                            <input type="search" placeholder="Search here.." />
+                            <form action="/search" method="get">
+                                <div class="search-btn">
+                                    <button style="border:none;background-color:inherit;" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                        </svg>
+                                    </button>
+
+                                </div>
+                                <input type="search" placeholder="Search here.." class="search-device" name="keyword" />
+                            </form>
                         </div>
                     </div>
                 </section>
-                <partial name="_Notification"/>
-                @RenderBody();
+                <partial name="_Notification" />
+                @RenderBody()
             </div>
             <ul class="side-bar">
                 @foreach (var item in data)
                 {
-                    <li class="side-item"><a  href="/device/@item.Slug"  class="side-link" >@item.Name</a></li>
+                    <li class="side-item"><a href="/device/@item.Slug" class="side-link">@item.Name</a></li>
                 }
 
             </ul>
-        </div>  
+        </div>
     </main>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="~/js/togglenav.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

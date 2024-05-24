@@ -54,17 +54,27 @@
                 <br />
                 <input asp-for="ReleasedDate" type="date" />
             </div>
-           <div>
+      
+
+            <div>
+
+                <label asp-for="SEO"></label>
+                <br />
+                <input asp-for="SEO" type="text" />
+            </div>
+       </div>
+
+        <div class="flex" style="align-items:center;justify-content:space-between;">
+            <div>
+                <input asp-for="IsActive" type="checkbox" />
+                <label asp-for="IsActive"></label>
+            </div>
+        
+            <div>
 
                 <label asp-for="Image"></label>
-                <br />
                 <input type="file" asp-for="Image" />
-           </div>
-       </div> 
-
-       <div>
-           <input asp-for="IsActive" type="checkbox"/>
-           <label asp-for="IsActive"></label>
+            </div>
        </div>
 
 

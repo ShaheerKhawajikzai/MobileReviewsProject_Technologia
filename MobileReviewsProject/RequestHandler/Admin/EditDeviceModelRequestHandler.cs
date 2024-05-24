@@ -46,6 +46,7 @@ namespace MobileReviewsProject.RequestHandler.Admin
             device.ReleaseDate = request.Device.ReleasedDate;
             device.Slug = request.Device.Slug;
             device.IsActive = request.Device.IsActive;
+            device.SEO = request.Device.SEO;
 
 
 

@@ -37,21 +37,27 @@ namespace MobileReviewsProject.Controllers
 
         public async Task<IActionResult> EditDevice(string slug)
         {
-            var data = await Mediator.Send(new GetDeviceBySlugModelRequest() { Slug = slug });
+            var response = await Mediator.Send(new GetDeviceBySlugModelRequest() { Slug = slug });
 
-            var device = new EditDevice()
+            if (response != null)
             {
-                ProductId = data.Device.Id,
-                Model = data.Device.Model,
-                Description = data.Device.Description,
-                PriceInPkr = data.Device.PriceInPKRInt.Value,
-                PriceinUsd = data.Device.PriceInUSD,
-                ImageUrl = data.Device.ImageUrl,
-                Slug = data.Device.Slug,
-                ReleasedDate = data.Device.ReleaseDate
-            };
+                var device = new EditDevice()
+                {
+                    ProductId = response.Device.Id,
+                    Model = response.Device.Model,
+                    Description = response.Device.Description,
+                    PriceInPkr = response.Device.PriceInPKRInt.Value,
+                    PriceinUsd = response.Device.PriceInUSD,
+                    ImageUrl = response.Device.ImageUrl,
+                    Slug = response.Device.Slug,
+                    ReleasedDate = response.Device.ReleaseDate,
+                    SEO = response.Device.SEO
+                };
+                return View(device);
+            }
 
-            return View(device);
+            return View();
+
         }
 
         [HttpPost]
@@ -136,7 +142,7 @@ namespace MobileReviewsProject.Controllers
 
             fl.File.WriteAllLines(folderPath, url);
 
-            return Json(new { isSuccess = true, Message= "Operation Performed Successfully." });
+            return Json(new { isSuccess = true, Message = "Operation Performed Successfully." });
         }
         public List<Claim> GetClaims(LoginModelResponse user)
         {

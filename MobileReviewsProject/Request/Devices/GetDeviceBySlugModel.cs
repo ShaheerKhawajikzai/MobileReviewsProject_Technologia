@@ -115,6 +115,7 @@ namespace MobileReviewsProject.Request.Devices
         public string? Slug { get; set; }
 
         public int View { get; set; }
+        public string  SEO { get; set; }
     }
 
     public class DeviceComments

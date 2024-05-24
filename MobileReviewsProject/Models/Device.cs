@@ -120,6 +120,7 @@ namespace MobileReviewsProject.Models
         public bool IsActive { get; set; }
 
         public bool IsRefactor { get; set; }
+        public string SEO { get; set; }
         public List<Comment> Comments { get; set; }
     }
 }

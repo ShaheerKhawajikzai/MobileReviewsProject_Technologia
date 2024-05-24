@@ -28,6 +28,9 @@ namespace MobileReviewsProject.Models.Admin
         public DateTime ReleasedDate { get; set; }
         public string Slug { get; set; }
 
+        public string  SEO { get; set; }
         public bool IsActive { get; set; }
+
+
     }
 }

@@ -1,14 +1,22 @@
 ﻿@model GetDeviceBySlugModelResponse
 
 @{
+    ViewData["Title"] = @Model.Device.Model;
+
     bool isFiveG;
     isFiveG = string.IsNullOrWhiteSpace(Model.Device.FiveGBand) ? false : true;
 
     bool isRadio;
     isRadio = string.IsNullOrWhiteSpace(Model.Device.Radio) ? false : true;
-
 }
 
+
+@section AdditionalMeta
+{
+    @* <meta name="keywords" content="@Model.Device.SEO" /> *@
+    <meta name="description" content="Compelte detail of @Model.Device.Model | RAM : @Model.Device.BuiltIn | Camera: @Model.Device.Main">
+    <meta name="robots" content="index, follow">
+}
 
 
 <div class="detail-image">
@@ -185,7 +193,7 @@
                 <td colspan="2" class="dull-color">@Model.Device.Data</td>
             </tr>
             <tr>
-                <th rowspan="7">Features</th>
+                <th rowspan="8">Features</th>
                 <th class="dull-color">Sensors</th>
                 <td colspan="2" class="dull-color">@Model.Device.Sensors</td>
             </tr>
@@ -214,6 +222,14 @@
                 <th class="dull-color">Torch</th>
                 <td colspan="2" class="dull-color">@Model.Device.Torch</td>
             </tr>
+            @if (Model.Device.SEO !="")
+            {
+                <tr>
+                    <th class="dull-color">SEO</th>
+                    <td colspan="2" class="dull-color">@Model.Device.SEO</td>
+                </tr>
+            }
+           
             <tr>
 
                 <th class="dull-color">Extra</th>
@@ -281,7 +297,7 @@
             <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z" />
         </svg>
     </div>
-  
+
     <hr />
     <div id="parent">
         @foreach (var item in Model.Comments.Take(5))
@@ -365,6 +381,6 @@
 
     </div>
 </div>
-
 <script src="~/js/commentjs/comment.js"></script>
+
 

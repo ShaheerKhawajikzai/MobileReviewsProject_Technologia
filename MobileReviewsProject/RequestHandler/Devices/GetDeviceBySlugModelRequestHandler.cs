@@ -22,7 +22,6 @@ namespace MobileReviewsProject.RequestHandler.Devices
             var deviceFromDb = await db.Devices.
                 Include(b => b.Brand).
                 Include(c => c.Comments).
-                Where(d => d.IsActive).
                 FirstOrDefaultAsync(d => d.Slug == request.Slug);
 
             if (deviceFromDb == null)
